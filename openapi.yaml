@@ -1,0 +1,206 @@
+openapi: 3.0.3
+info: 
+  title: API para Gestão Escolar
+  description: | 
+    ## API REST com CRUD, Node.js e MongoDB.
+    ### Gestão escolar em turmas e alunos de ensino medio. 
+    #### Projeto final do curso de Back-End da TOTI. 
+  contact:
+    name: Repositorio GitHub
+    url: https://github.com/marioxis/API
+  version: 1.0.0
+servers:
+  - url: https://localhost:3000/aluno
+  - url: https://localhost:3000/turma
+tags:
+  - name: aluno
+    description: Endpoint para a gestão dos alunos.
+paths:
+  /aluno:
+    post:
+      tags:
+        - aluno
+      summary: Cria um aluno dentro do banco de dados
+      description: Endpoint responsável pela criação dos alunos dentro do banco de dados.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyAlunosPost'
+        required: true
+      responses:
+        '201':
+          description: Aluno inserido com sucesso!
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/AlunoInserido'
+        '500':
+          description: Erro
+    get:
+      tags:
+        - aluno
+      summary: Lista de todos os alunos no banco de dados
+      description: EndPoint responsável por mostrar todos os alunos existentes no banco de dados.
+      responses:
+        '200':
+          description: Retorna todos os alunos no banco de dados
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/BodyAlunosGet'
+        '500':
+          description: Erro
+  /aluno/{idAluno}:
+    get:
+      tags:
+        - aluno
+      summary: Obter informações sobre um aluno em especifico
+      description: Endpoint resposável por mostrar os detalhes sobre um aluno especifico pelo seu _id_.
+      parameters:
+        - name: idAluno
+          in: path
+          description: Identificador único do aluno.
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Retorna os detalhes sobre um aluno selecionado pelo seu _id_.
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/BodyAlunosGet'
+        '422':
+          description: Aluno não encontrado!
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/AlunoNaoEncontrado'
+        '500':
+          description: Erro
+    put:
+      tags:
+        - aluno
+      summary: Atualizar informações de um aluno no banco de dados
+      description: Endpoint responsável por atualizar informações sobre um aluno selecionado pelo seu _id_ dentro do banco de dados
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyAlunosPost'
+        required: true
+      parameters:
+        - name: idAluno
+          in: path
+          description: Identificador único do aluno.
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: O aluno foi atualizado com sucesso!
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/AlunoInserido'
+        '422':
+          description: Aluno não encontrado!
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/AlunoNaoEncontrado'
+        '500':
+          description: Erro
+    delete:
+      tags:
+        - aluno
+      summary: Remover informações de um aluno no banco de dados
+      description: Endpoint responsável por remover alunos selecionados pelo seu _id_ dentro do banco de dados.
+      parameters:
+        - name: idAluno
+          in: path
+          description: Identificador único do aluno.
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Aluno removido com sucesso!
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/AlunoRemovido'
+        '422':
+          description: Aluno não encontrado!
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/AlunoNaoEncontrado'
+        '500':
+          description: Erro
+components:
+  schemas:
+    BodyAlunosPost:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nome completo do aluno
+        age:
+          type: number
+          description: Idade do aluno
+        degree:
+          type: number
+          description: Turma do aluno
+        parent:
+          type: string
+          description: Parente ou representante do aluno
+        gender:
+          type: string
+          description: Genero do aluno
+        approved:
+          type: boolean
+          description: Mostra se o aluno está aprovado ou não
+    BodyAlunosGet:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Identificador único do aluno
+        name:
+          type: string
+          description: Nome do aluno
+        age:
+          type: number
+          description: Idade do aluno
+        degree:
+          type: number
+          description: Turma do aluno
+        parent:
+          type: string
+          description: Parente ou representante do aluno
+        gender:
+          type: string
+          description: Genero do aluno
+        approved:
+          type: boolean
+          description: Mostra se o aluno está aprovado ou não
+    AlunoInserido:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Aluno inserido com sucesso!
+    AlunoNaoEncontrado:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Aluno não encontrado!
+    AlunoRemovido:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Aluno removido com sucesso!
