@@ -23,4 +23,4 @@ $ npm start </br>
 <ul>
 <li>Insonmia v-2022.5.1</li>
 
-<p>Projeto final colaborativo da TOTI por Karen Gallardo, Maralied Tafur, Marioxis Macías e Melissa Mendoza.</p>
+<p>Projeto final colaborativo da TOTI por <a href="https://github.com/karensgo">Karen Gallardo</a>, <a href="https://github.com/maraliedtafur">  Maralied Tafur</a>, <a href="https://github.com/marioxis"> Marioxis Macías</a> e <a href="https://github.com/Melsanz">Melissa Mendoza</a> .</p>
