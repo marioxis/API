@@ -1,6 +1,6 @@
 <h1>API REST para Gestão Escolar</h1>
 
-<h2>API REST com CRUD, Node.js, MongoDB e OpenAPI para gestão escolar de alunos de ensino meio</h2>
+<h3>API REST com CRUD, Node.js, MongoDB e OpenAPI para gestão escolar de alunos de ensino meio</h3>
 <h3>Dependências</h3>
 <ul>
 <li> <a href="http://expressjs.com/en/starter/installing.html">Express </a></li>
@@ -13,11 +13,11 @@
 <h3>Utilização</h3>
 <ul>
 <li> Após clonar o projeto, accesse ao terminal e instale as dependencias </li>
-```
-$ npm init -y
-$ npm install express nodemon mongoose swagger-ui
-$ npm start 
-```
+
+$ npm init -y </br>
+$ npm install express nodemon mongoose swagger-ui </br>
+$ npm start </br>
+
 
 <h3>Visualização das requisições</h3>
 <ul>
