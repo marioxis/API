@@ -259,7 +259,7 @@
         "tags": [
           "turma"
         ],
-        "summary": "Lista de todas as turmas no banco de dados",
+        "summary": "Lista todas as no banco de dados",
         "description": "EndPoint responsável por mostrar todas as turmas existentes no banco de dados.",
         "responses": {
           "200": {
@@ -380,7 +380,7 @@
           "turma"
         ],
         "summary": "Remover informações de uma turma no banco de dados",
-        "description": "Endpoint responsável por remover a turma selecionada pelo seu _id_ dentro do banco de dados.",
+        "description": "Endpoint responsável por remover turmas selecionados pelo seu _id_ dentro do banco de dados.",
         "parameters": [
           {
             "name": "idTurma",

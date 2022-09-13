@@ -1,39 +1,40 @@
 const router = require('express').Router()
 
-const Escola = require('../models/Escola')
+const Aluno = require('../models/Aluno')
 
 //Create data
 router.post('/', async (req, res) => {
-    const { name, age, degree, parent, gender, approved } = req.body
+    const { name, age, degree, parent, gender, approved, turma } = req.body
     if(!name) {
         res.status(422).json({ error: 'O nome do aluno é obrigatorio!'})
-    }
-  
-    const escola = {
+    } else {
+
+    const aluno = {
       name,
       age,
       degree,
       parent,
       gender,
       approved,
+      turma
     }
   
     try {
-      await Escola.create(escola)
-  
-      res.status(201).json({ message: 'Aluno inserido no sistema com sucesso!' })
+      const aluno = await Aluno.create(req.body)
+      res.status(200).json({message: 'Aluno inserido com sucesso!'})
     } catch (error) {
       res.status(500).json({ erro: error })
     }
+  }
   })
 
 //Read all data
 
 router.get('/', async (req, res) => {
     try {
-      const escola = await Escola.find()
+      const aluno = await Aluno.find().populate('turma')
   
-      res.status(200).json(escola)
+      res.status(200).json(aluno)
     } catch (error) {
       res.status(500).json({ erro: error })
     }
@@ -44,14 +45,14 @@ router.get('/:id', async (req, res) => {
     const id = req.params.id
   
     try {
-      const escola = await Escola.findOne({ _id: id })
+      const aluno = await Aluno.findOne({ _id: id })
   
-      if (!escola) {
+      if (!aluno) {
         res.status(422).json({ message: 'Aluno não encontrado!' })
         return
       }
   
-      res.status(200).json(escola)
+      res.status(200).json(aluno)
     } catch (error) {
       res.status(500).json({ erro: error })
     }
@@ -61,26 +62,27 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const id = req.params.id
   
-    const { name, age, degree, parent, gender, approved } = req.body
+    const { name, age, degree, parent, gender, approved, turma } = req.body
   
-    const escola = {
+    const aluno = {
       name,
       age,
       degree,
       parent,
       gender,
       approved,
+      turma
     }
   
     try {
-      const updatedEscola = await Escola.updateOne({ _id: id }, escola)
+      const updatedAluno = await Aluno.updateOne({ _id: id }, aluno)
   
-      if (updatedEscola.matchedCount === 0) {
+      if (updatedAluno.matchedCount === 0) {
         res.status(422).json({ message: 'Aluno não encontrado!' })
         return
       }
   
-      res.status(200).json(escola)
+      res.status(200).json({message: 'Aluno alterado com sucesso'})
     } catch (error) {
       res.status(500).json({ erro: error })
     }
@@ -90,15 +92,15 @@ router.put('/:id', async (req, res) => {
   router.delete('/:id', async (req, res) => {
     const id = req.params.id
   
-    const escola = await Escola.findOne({ _id: id })
+    const aluno = await Aluno.findOne({ _id: id })
   
-    if (!escola) {
+    if (!aluno) {
       res.status(422).json({ message: 'Aluno não encontrado!' })
       return
     }
   
     try {
-      await Escola.deleteOne({ _id: id })
+      await Aluno.deleteOne({ _id: id })
   
       res.status(200).json({ message: 'Aluno removido com sucesso!' })
     } catch (error) {
@@ -107,5 +109,3 @@ router.put('/:id', async (req, res) => {
   })
 
 module.exports = router
-  
-  

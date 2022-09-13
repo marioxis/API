@@ -1,7 +1,7 @@
 openapi: 3.0.3
-info:
+info: 
   title: API para Gestão Escolar
-  description: |
+  description: | 
     ## API REST com CRUD, Node.js e MongoDB.
     ### Gestão escolar em turmas e alunos de ensino medio. 
     #### Projeto final do curso de Back-End da TOTI. 
@@ -164,7 +164,7 @@ paths:
     get:
       tags:
         - turma
-      summary: Lista de todas as turmas no banco de dados
+      summary: Lista todas as no banco de dados
       description: EndPoint responsável por mostrar todas as turmas existentes no banco de dados.
       responses:
         '200':
@@ -240,7 +240,7 @@ paths:
       tags:
         - turma
       summary: Remover informações de uma turma no banco de dados
-      description: Endpoint responsável por remover a turma selecionada pelo seu _id_ dentro do banco de dados.
+      description: Endpoint responsável por remover turmas selecionados pelo seu _id_ dentro do banco de dados.
       parameters:
         - name: idTurma
           in: path
@@ -391,3 +391,4 @@ components:
         message:
           type: string
           description: Dados da turma do aluno removido com sucesso!
+
