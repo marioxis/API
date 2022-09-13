@@ -13,10 +13,11 @@
 <h3>Utilização</h3>
 <ul>
 <li> Após clonar o projeto, accesse ao terminal e instale as dependencias </li>
-</ul>
+
 $ npm init -y </br>
 $ npm install express nodemon mongoose swagger-ui </br>
 $ npm start </br>
+</ul>
 
 
 <h3>Visualização das requisições</h3>
