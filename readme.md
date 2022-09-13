@@ -13,7 +13,7 @@
 <h3>Utilização</h3>
 <ul>
 <li> Após clonar o projeto, accesse ao terminal e instale as dependencias </li>
-
+</ul>
 $ npm init -y </br>
 $ npm install express nodemon mongoose swagger-ui </br>
 $ npm start </br>
@@ -22,5 +22,5 @@ $ npm start </br>
 <h3>Visualização das requisições</h3>
 <ul>
 <li>Insonmia v-2022.5.1</li>
-
+</ul>
 <p>Projeto final colaborativo da TOTI por <a href="https://github.com/karensgo">Karen Gallardo</a>, <a href="https://github.com/maraliedtafur">  Maralied Tafur</a>, <a href="https://github.com/marioxis"> Marioxis Macías</a> e <a href="https://github.com/Melsanz">Melissa Mendoza</a> .</p>
