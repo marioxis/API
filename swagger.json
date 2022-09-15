@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://localhost:3000"
+      "url": "http://localhost:3000"
     }
   ],
   "tags": [
@@ -37,6 +37,19 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BodyAlunosPost"
+              },
+              "examples": {
+                "Aluno": {
+                  "value": {
+                    "name": "Henrique Iglesias",
+                    "age": "15",
+                    "degree": 3,
+                    "parent": "Juan Iglesias",
+                    "gender": "M",
+                    "aproved": true,
+                    "turma": "631e31e8f07299f73fd49e8a"
+                  }
+                }
               }
             }
           },
@@ -66,7 +79,7 @@
         "description": "EndPoint responsável por mostrar todos os alunos existentes no banco de dados.",
         "responses": {
           "200": {
-            "description": "Todos os alunos inseridos no banco de dados",
+            "description": "Retorna todos os alunos no banco de dados",
             "content": {
               "aplication/json": {
                 "schema": {
@@ -101,7 +114,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK!",
+            "description": "Retorna os detalhes sobre um aluno selecionado pelo seu _id_.",
             "content": {
               "aplication/json": {
                 "schema": {
@@ -111,7 +124,7 @@
             }
           },
           "422": {
-            "description": "Identificador não encontrada!",
+            "description": "Aluno não encontrado!",
             "content": {
               "aplication/json": {
                 "schema": {
@@ -136,6 +149,19 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BodyAlunosPost"
+              },
+              "examples": {
+                "Aluno": {
+                  "value": {
+                    "name": "Henrique Iglesias",
+                    "age": "17",
+                    "degree": 3,
+                    "parent": "Petronila Alvarez",
+                    "gender": "M",
+                    "aproved": true,
+                    "turma": "631e31e8f07299f73fd49e8a"
+                  }
+                }
               }
             }
           },
@@ -207,7 +233,7 @@
             }
           },
           "422": {
-            "description": "Aluno não removido!",
+            "description": "Aluno não encontrado!",
             "content": {
               "aplication/json": {
                 "schema": {
@@ -234,6 +260,18 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BodyTurmasPost"
+              },
+              "examples": {
+                "Turma": {
+                  "value": {
+                    "teacherName": "Lucinda Nunes",
+                    "totalStudents": 6,
+                    "totalCourses": 5,
+                    "coursesCredits": 100,
+                    "totalHours": 7,
+                    "courseCoordinator": "Mariano Braz"
+                  }
+                }
               }
             }
           },
@@ -351,7 +389,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A turma foi atualizada com sucesso!",
+            "description": "O turma foi atualizada com sucesso!",
             "content": {
               "aplication/json": {
                 "schema": {
@@ -361,7 +399,7 @@
             }
           },
           "422": {
-            "description": "Turma não atualizada, verifique os dados!",
+            "description": "Turma não encontrada!",
             "content": {
               "aplication/json": {
                 "schema": {
@@ -404,7 +442,7 @@
             }
           },
           "422": {
-            "description": "Turma não removida!",
+            "description": "Turma não encontrada!",
             "content": {
               "aplication/json": {
                 "schema": {
@@ -448,6 +486,10 @@
           "approved": {
             "type": "boolean",
             "description": "Mostra se o aluno está aprovado ou não"
+          },
+          "turma": {
+            "type": "string",
+            "description": "ID da turma do aluno"
           }
         }
       },
@@ -481,6 +523,10 @@
           "approved": {
             "type": "boolean",
             "description": "Mostra se o aluno está aprovado ou não"
+          },
+          "turma": {
+            "type": "string",
+            "description": "ID da turma do aluno"
           }
         }
       },
