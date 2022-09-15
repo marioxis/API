@@ -10,8 +10,7 @@ info:
     url: https://github.com/marioxis/API
   version: 1.0.0
 servers:
-  - url: https://localhost:3000/aluno
-  - url: https://localhost:3000/turma
+  - url: https://localhost:3000
 tags:
   - name: aluno
     description: Gestão dos alunos.
@@ -46,7 +45,7 @@ paths:
       description: EndPoint responsável por mostrar todos os alunos existentes no banco de dados.
       responses:
         '200':
-          description: Retorna todos os alunos no banco de dados
+          description: Todos os alunos inseridos no banco de dados
           content:
             aplication/json:
               schema:
@@ -68,13 +67,13 @@ paths:
             type: string
       responses:
         '200':
-          description: Retorna os detalhes sobre um aluno selecionado pelo seu _id_.
+          description: OK!
           content:
             aplication/json:
               schema:
                 $ref: '#/components/schemas/BodyAlunosGet'
         '422':
-          description: Aluno não encontrado!
+          description: Identificador não encontrada!
           content:
             aplication/json:
               schema:
@@ -134,7 +133,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AlunoRemovido'
         '422':
-          description: Aluno não encontrado!
+          description: Aluno não removido!
           content:
             aplication/json:
               schema:
@@ -224,13 +223,13 @@ paths:
             type: string
       responses:
         '200':
-          description: O turma foi atualizada com sucesso!
+          description: A turma foi atualizada com sucesso!
           content:
             aplication/json:
               schema:
                 $ref: '#/components/schemas/TurmaInserida'
         '422':
-          description: Turma não encontrada!
+          description: Turma não atualizada, verifique os dados!
           content:
             aplication/json:
               schema:
@@ -257,7 +256,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TurmaRemovida'
         '422':
-          description: Turma não encontrada!
+          description: Turma não removida!
           content:
             aplication/json:
               schema:
