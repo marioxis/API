@@ -10,7 +10,7 @@ info:
     url: https://github.com/marioxis/API
   version: 1.0.0
 servers:
-  - url: https://localhost:3000
+  - url: http://localhost:3000
 tags:
   - name: aluno
     description: Gestão dos alunos.
@@ -28,6 +28,16 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BodyAlunosPost'
+            examples:
+              Aluno:
+                value:
+                  name: 'Henrique Iglesias'
+                  age: '15'
+                  degree: 03
+                  parent: 'Juan Iglesias'
+                  gender: 'M'
+                  aproved: true
+                  turma: '631e31e8f07299f73fd49e8a'
         required: true
       responses:
         '201':
@@ -50,6 +60,7 @@ paths:
             aplication/json:
               schema:
                 $ref: '#/components/schemas/BodyAlunosGet'
+              
         '500':
           description: Erro
   /aluno/{idAluno}:
@@ -90,6 +101,16 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BodyAlunosPost'
+            examples:
+              Aluno:
+                value:
+                  name: 'Henrique Iglesias'
+                  age: '17'
+                  degree: 03
+                  parent: 'Petronila Alvarez'
+                  gender: 'M'
+                  aproved: true
+                  turma: '631e31e8f07299f73fd49e8a'  
         required: true
       parameters:
         - name: idAluno
@@ -151,6 +172,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BodyTurmasPost'
+            examples:
+              Turma:
+                value:
+                  teacherName: "Lucinda Nunes"
+                  totalStudents: 6
+                  totalCourses: 5
+                  coursesCredits: 100
+                  totalHours: 7
+                  courseCoordinator: "Mariano Braz"
         required: true
       responses:
         '201':
@@ -286,6 +316,9 @@ components:
         approved:
           type: boolean
           description: Mostra se o aluno está aprovado ou não
+        turma:
+          type: string
+          description: ID da turma do aluno
     BodyAlunosGet:
       type: object
       properties:
@@ -310,6 +343,9 @@ components:
         approved:
           type: boolean
           description: Mostra se o aluno está aprovado ou não
+        turma:
+          type: string
+          description: ID da turma do aluno
     AlunoInserido:
       type: object
       properties:
@@ -391,4 +427,3 @@ components:
         message:
           type: string
           description: Dados da turma do aluno removido com sucesso!
-
