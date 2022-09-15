@@ -11,10 +11,7 @@ const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./swagger.json')
 
 //Definindo rota para a documentação
-app.use(
-  '/docs',
-  swaggerUi.serve);
-app.get('/docs', swaggerUi.setup(swaggerDocument));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //read JSON
 app.use(
